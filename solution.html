@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix — Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#080f1a;
+    --bg-panel:#0d1826;
+    --bg-panel-2:#111f30;
+    --line:#185260;
+    --line-soft:#197490;
+    --card:#1e2124;
+    --ink:rgb(22, 217, 227);
+    --ink-soft:#b4cbd2;
+    --teal:#00d4fe;
+    --teal-deep:#9cc3d7;
+    --coral:#9bc1af;
+    --line:#079f97;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --display:'Zilla Slab', Georgia, serif;
+    --body:'Inter', system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  .grid-field{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:.35;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 85%);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    z-index:1;
+    padding:80px 0 52px;
+    max-width:920px;
+    margin:0 auto;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin-bottom:1.6rem;
+  }
+  .breadcrumb{font-family:var(--mono);font-size:.78rem;color:var(--text-low);margin-bottom:26px;}
+  .breadcrumb a{color:var(--text-mid);}
+  .breadcrumb a:hover{color:var(--cyan);}
+  .eyebrow::before{
+    content:"";
+    
+    border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 4px rgba(214,73,51,0.15);
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0 0 1.4rem;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--teal);
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:38rem;
+    margin:0;
+  }
+
+  /* animated pulse divider */
+  .pulse-wrap{
+    margin-top:50px;
+    height:56px;
+  }
+  .pulse-wrap svg{width:100%;height:100%;display:block;}
+  .pulse-line{
+    fill:none;
+    stroke:var(--teal);
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:12  3000;
+    stroke-dashoffset:0;
+    animation:draw 10s linear infinite;
+  }
+  @keyframes draw{
+    from{stroke-dashoffset:0;}
+    to{stroke-dashoffset:-3006;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pulse-line{animation:none;stroke-dasharray:none;}
+  }
+
+  /* ---------- Solutions list ---------- */
+  main{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 1.5rem 6rem;
+  }
+  .list{
+    position:relative;
+    padding-left:2.4rem;
+  }
+  .list::before{
+    content:"";
+    position:absolute;
+    left:6px;
+    top:10px;
+    bottom:10px;
+    width:1px;
+    background:var(--line);
+  }
+
+  .solution{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin-bottom:0.9rem;
+    transition:border-color 0.2s ease;
+  }
+  .solution:hover{border-color:var(--teal);}
+
+  .tick{
+    position:absolute;
+    left:-2.4rem;
+    top:1.55rem;
+    width:13px;height:13px;
+    border-radius:50%;
+  
+    border:2px solid var(--teal);
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .solution.open .tick{
+    background:var(--teal);
+    transform:scale(1.15);
+  }
+
+  .head-row{
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    width:100%;
+    padding:1.4rem 1.4rem;
+    background:none;
+    border:none;
+    text-align:left;
+    cursor:pointer;
+    font:inherit;
+    color:inherit;
+  }
+  .head-row:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:-2px;
+    border-radius:8px;
+  }
+
+  .chan{
+    font-family:var(--mono);
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+    margin-bottom:0.35rem;
+    display:block;
+  }
+  .head-text{flex:1;min-width:0;}
+  .head-text h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.4rem;
+    margin:0 0 0.3rem;
+  }
+  .teaser{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.98rem;
+  }
+
+  .toggle{
+    flex-shrink:0;
+    width:40px;height:40px;
+    border-radius:50%;
+    border:1px solid var(--line);
+   
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:0.1rem;
+    transition:transform 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .toggle svg{
+    width:14px;height:14px;
+    stroke:var(--ink);
+    transition:stroke 0.2s ease;
+  }
+  .solution.open .toggle{
+    transform:rotate(-90deg);
+    background:var(--teal);
+    border-color:var(--teal);
+  }
+  .solution.open .toggle svg{stroke:#fff;}
+
+  .panel{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows 0.32s ease;
+  }
+  .panel-inner{overflow:hidden;}
+  .solution.open .panel{grid-template-rows:1fr;}
+
+  .panel-content{
+    padding:0 1.4rem 1.5rem 1.4rem;
+    border-top:1px solid var(--line);
+    margin-top:0;
+  }
+  .panel-content p{
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:1rem 0 1rem;
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem;
+  }
+  .tags span{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    padding:0.3rem 0.6rem;
+    border-radius:999px;
+    
+    border:1px solid var(--line);
+    color:var(--teal-deep);
+  }
+
+  footer{
+    max-width:920px;
+    margin:0 auto;
+    padding:2rem 1.5rem 4rem;
+    font-family:var(--mono);
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    border-top:0.5px solid var(--line);
+  }
+
+  @media (max-width:600px){
+    .hero{padding:3.5rem 1.2rem 2.5rem;}
+    main{padding:0 1.2rem 4rem;}
+    .list{padding-left:1.8rem;}
+    .list::before{left:4px;}
+    .tick{left:-1.8rem;width:11px;height:11px;}
+    .head-row{padding:1.1rem 1rem;gap:0.7rem;}
+    .toggle{width:34px;height:34px;}
+  }
+</style>
+</head>
+<body>
+<div class="grid-field"></div>
+  <section class="hero">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Solutions</div>
+    <span class="eyebrow">Synchronix / Solutions</span>
+    <h1>Ten systems.<br><em>One signal.</em></h1>
+    <p class="lead">Every part of a business runs on its own clock — inventory, teams, sensors, dashboards. Synchronix brings them onto one, so nothing drifts out of time with anything else. Open a channel below to see how.</p>
+    <div class="pulse-wrap" aria-hidden="true">
+      <svg viewBox="0 0 900 56" preserveAspectRatio="none">
+        <path class="pulse-line" d="M0,28 L120,28 L145,8 L165,48 L185,28 L320,28 L345,8 L365,48 L385,28 L520,28 L545,8 L565,48 L585,28 L720,28 L745,8 L765,48 L785,28 L900,28" />
+      </svg>
+    </div>
+  </section>
+
+  <main>
+    <div class="list" id="solutions-list">
+
+      <!-- Item template repeated x10 -->
+
+      <div class="solution" data-index="01">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-01" id="ctrl-01">
+          <span class="head-text">
+            <span class="chan">SYNC/01 · DATA</span>
+            <h2>Data Sync Engine</h2>
+            <p class="teaser">Keeps every database, spreadsheet, and app reading the same numbers, updated in real time.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-01" role="region" aria-labelledby="ctrl-01">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Changes made in one system propagate everywhere else in seconds, not overnight. Field teams, finance, and support all work from a single up-to-date record, with conflicts resolved automatically instead of by whoever edited last.</p>
+              <div class="tags"><span>Real-time replication</span><span>Conflict resolution</span><span>Any-to-any</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="02">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-02" id="ctrl-02">
+          <span class="head-text">
+            <span class="chan">SYNC/02 · PROCESS</span>
+            <h2>Workflow Automation</h2>
+            <p class="teaser">Turns multi-step approvals and handoffs into a chain that runs itself, start to finish.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-02" role="region" aria-labelledby="ctrl-02">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Design a process once — a request, an approval, a fulfillment step — and let it trigger the next action on its own. People only step in for judgment calls; everything routine happens without a reminder email.</p>
+              <div class="tags"><span>Visual builder</span><span>Conditional routing</span><span>Audit trail</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="03">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-03" id="ctrl-03">
+          <span class="head-text">
+            <span class="chan">SYNC/03 · CLOUD</span>
+            <h2>Cloud Integration Hub</h2>
+            <p class="teaser">Connects the cloud tools a business already uses so they act as one system, not a dozen.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-03" role="region" aria-labelledby="ctrl-03">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Pre-built bridges to the CRMs, payment processors, and storage platforms teams already rely on, plus an open connector kit for anything custom. No more exporting a CSV just to move data from one tab to another.</p>
+              <div class="tags"><span>200+ connectors</span><span>Custom API kit</span><span>No-code setup</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="04">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-04" id="ctrl-04">
+          <span class="head-text">
+            <span class="chan">SYNC/04 · TEAMS</span>
+            <h2>Team Collaboration Sync</h2>
+            <p class="teaser">Keeps distributed teams working from the same version of a document, task, or plan.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-04" role="region" aria-labelledby="ctrl-04">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Edits, comments, and status changes reach every collaborator the moment they happen, across time zones and tools. Nobody works off a stale copy, and nobody has to ask "is this the latest version?" again.</p>
+              <div class="tags"><span>Live presence</span><span>Version history</span><span>Cross-timezone</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="05">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-05" id="ctrl-05">
+          <span class="head-text">
+            <span class="chan">SYNC/05 · DEVICES</span>
+            <h2>IoT Device Mesh</h2>
+            <p class="teaser">Brings sensors and equipment across every site onto a single, synchronized network.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-05" role="region" aria-labelledby="ctrl-05">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Thousands of devices report on the same clock, so a reading from one site can be compared against another without guesswork about timing or drift. Firmware updates roll out in a controlled wave instead of all at once.</p>
+              <div class="tags"><span>Edge sync</span><span>Fleet updates</span><span>Offline buffering</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="06">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-06" id="ctrl-06">
+          <span class="head-text">
+            <span class="chan">SYNC/06 · ACCESS</span>
+            <h2>Security &amp; Access Sync</h2>
+            <p class="teaser">Aligns permissions across every system, so access is granted and revoked in one place.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-06" role="region" aria-labelledby="ctrl-06">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>When someone joins, changes roles, or leaves, their access updates everywhere at once — email, file storage, internal tools — instead of trailing behind in whichever system IT forgot to check. Fewer orphaned accounts, fewer gaps.</p>
+              <div class="tags"><span>Single sign-on</span><span>Role sync</span><span>Instant deprovisioning</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="07">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-07" id="ctrl-07">
+          <span class="head-text">
+            <span class="chan">SYNC/07 · SIGNAL</span>
+            <h2>Analytics Pulse</h2>
+            <p class="teaser">Dashboards that reflect what's happening right now, not what happened last night.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-07" role="region" aria-labelledby="ctrl-07">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Metrics update as the underlying data changes, so a spike in demand or a drop in performance shows up while it's still actionable. Built-in alerts flag the moment a number crosses a threshold that matters.</p>
+              <div class="tags"><span>Live dashboards</span><span>Threshold alerts</span><span>Historical replay</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="08">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-08" id="ctrl-08">
+          <span class="head-text">
+            <span class="chan">SYNC/08 · APIS</span>
+            <h2>API Orchestration Layer</h2>
+            <p class="teaser">Manages traffic between services so requests land in the right order, every time.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-08" role="region" aria-labelledby="ctrl-08">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Sits between internal services and external APIs, sequencing calls, retrying failures, and smoothing out rate limits so one slow dependency doesn't stall everything behind it.</p>
+              <div class="tags"><span>Request queuing</span><span>Automatic retries</span><span>Rate-limit aware</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="09">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-09" id="ctrl-09">
+          <span class="head-text">
+            <span class="chan">SYNC/09 · STOCK</span>
+            <h2>Inventory &amp; Supply Sync</h2>
+            <p class="teaser">Matches stock counts across every warehouse and sales channel in real time.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-09" role="region" aria-labelledby="ctrl-09">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>A sale on one channel updates the count everywhere else instantly, so nothing gets sold twice and nothing sits unlisted. Reorder points trigger automatically before a shelf actually runs dry.</p>
+              <div class="tags"><span>Multi-warehouse</span><span>Channel sync</span><span>Auto reorder</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution" data-index="10">
+        <span class="tick" aria-hidden="true"></span>
+        <button class="head-row" aria-expanded="false" aria-controls="panel-10" id="ctrl-10">
+          <span class="head-text">
+            <span class="chan">SYNC/10 · INSIGHT</span>
+            <h2>AI Insight Sync</h2>
+            <p class="teaser">Feeds AI-generated recommendations directly into the tools teams already use daily.</p>
+          </span>
+          <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+        </button>
+        <div class="panel" id="panel-10" role="region" aria-labelledby="ctrl-10">
+          <div class="panel-inner">
+            <div class="panel-content">
+              <p>Instead of a separate report nobody opens, forecasts and suggestions appear inline — in the CRM, the planning sheet, the support queue — right where the decision is actually being made.</p>
+              <div class="tags"><span>Inline suggestions</span><span>Forecasting</span><span>No new dashboard</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+   2026 Synchronix | SOLUTION OF SYNC | Authorized by QUMI JENIS Pvt Ltd
+  </footer>
+
+<script>
+  document.querySelectorAll('.head-row').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var solution = btn.closest('.solution');
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      solution.classList.toggle('open', !expanded);
+    });
+  });
+</script>
+
+</body>
+</html>

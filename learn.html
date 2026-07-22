@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix | How the Digital Twin Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"  href="learn.css">
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span>SYNCHRONIX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="soulution.html">Solutions</a></li>
+      <li><a href="dashboard">Dashboard</a></li>
+      <li><a href="#About class="active">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost">Login</a>
+      <a href="shop.html" class="btn btn-solid">Shop</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="page-hero wrap" style="padding-top:64px;">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Learn More</div>
+    <div class="eyebrow">How It Works</div>
+    <h1>What actually happens inside a <span class="accent">digital twin</span></h1>
+    <p class="lead">A digital twin isn't a 3D model or a dashboard — it's a live, physics-informed replica of your machine that updates itself continuously and lets you test changes before they touch the real line.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Under the Hood</div>
+      <h2>Four layers, working in a continuous loop</h2>
+      <p>Each layer of the Synchronix stack has one job. Together, they keep the model honest.</p>
+    </div>
+    <div class="arch">
+      <div class="arch-row">
+        <div class="arch-label">Layer 01</div>
+        <div class="arch-content">
+          <h3>Edge Ingestion</h3>
+          <p>Sensor data — vibration, thermal, current draw, pressure — streams from PLCs and IoT edge nodes with sub-millisecond capture, buffered locally so no reading is ever lost during a network drop.</p>
+          <div class="arch-tags"><span>OPC-UA</span><span>Modbus</span><span>MQTT</span><span>Edge buffering</span></div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-label">Layer 02</div>
+        <div class="arch-content">
+          <h3>Physics-Informed Modeling</h3>
+          <p>Incoming readings are reconciled against a model built from your machine's actual engineering specs, not a generic template — so the twin corrects for real wear, not textbook behavior.</p>
+          <div class="arch-tags"><span>State estimation</span><span>Drift correction</span><span>Asset-specific tuning</span></div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-label">Layer 03</div>
+        <div class="arch-content">
+          <h3>Scenario Simulation</h3>
+          <p>Once the twin is in sync, it can run forward — testing a load increase, a delayed maintenance window, or a component failure — without ever touching the physical machine.</p>
+          <div class="arch-tags"><span>Monte Carlo runs</span><span>Failure injection</span><span>What-if load testing</span></div>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-label">Layer 04</div>
+        <div class="arch-content">
+          <h3>Closed-Loop Recommendations</h3>
+          <p>Results route back to operators as ranked, plain-language recommendations, or directly into control systems for machines cleared for automated set-point changes.</p>
+          <div class="arch-tags"><span>Operator alerts</span><span>Auto set-points</span><span>Audit trail</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why It Matters</div>
+      <h2>Reacting to failures vs. seeing them coming</h2>
+      <p>Most plants run on the left column today. Synchronix moves you to the right.</p>
+    </div>
+    <div class="compare">
+      <div class="compare-col without">
+        <h3>Without a Digital Twin</h3>
+        <ul>
+          <li><span class="mk">–</span> Failures are diagnosed after the machine has already stopped</li>
+          <li><span class="mk">–</span> Maintenance runs on fixed schedules, not actual wear</li>
+          <li><span class="mk">–</span> Load changes are tested live, on the real line</li>
+          <li><span class="mk">–</span> Knowledge of "how this machine behaves" lives in one technician's head</li>
+        </ul>
+      </div>
+      <div class="compare-col with">
+        <h3>With Synchronix</h3>
+        <ul>
+          <li><span class="mk">→</span> Anomalies surface in the model minutes to days before failure</li>
+          <li><span class="mk">→</span> Maintenance is scheduled against predicted wear, not the calendar</li>
+          <li><span class="mk">→</span> Load and config changes are tested against the twin first</li>
+          <li><span class="mk">→</span> Machine behavior is captured in a model anyone on the team can query</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Common questions from plant engineers</h2>
+      <p>If you don't see your question here, reach out — we'll get you a straight answer.</p>
+    </div>
+    <div class="faq" id="faq">
+      <div class="faq-item open">
+        <button class="faq-q"><span>How long does it take to get a machine's twin running?</span><span class="ind">+</span></button>
+        <div class="faq-a"><p>Most single-line deployments go live in one to two weeks — sensor install and calibration usually take longer than the modeling itself.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Do we need new sensors, or can you use what's already installed?</span><span class="ind">+</span></button>
+        <div class="faq-a"><p>Synchronix reads from existing PLCs and historians wherever possible. We only recommend new sensors where a critical failure mode has no current signal to detect it.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Can the twin write back to our control systems automatically?</span><span class="ind">+</span></button>
+        <div class="faq-a"><p>Yes, but it's opt-in per machine. Most customers start in recommend-only mode and enable automated set-point changes once they trust the model's track record.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>What happens if the network connection to a line drops?</span><span class="ind">+</span></button>
+        <div class="faq-a"><p>Edge nodes buffer locally and resync once connectivity returns, so you never lose a reading — the twin just catches up.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>See your own line mirrored, live</h2>
+      <p>We'll connect a single machine and show you real telemetry inside two weeks — no long-term commitment required.</p>
+      <div class="btns">
+        <a href="index.html#contact" class="btn btn-solid">Request a Demo</a>
+        <a href="index.html" class="btn btn-outline-cyan">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Synchronix Industrial Systems</span>
+      <span>System status: nominal</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

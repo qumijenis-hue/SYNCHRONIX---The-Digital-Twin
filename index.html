@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix | AI-Powered Digital Twin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="dot"></span>SYNCHRONIX</div>
+     
+<div class="menu-toggle" id="menu">
+
+<i class="fa-solid fa-bars"></i>
+
+</div>
+
+
+  
+       <ul class="nav-links" id="links"> 
+           <li><a href="index.html" class="active">Home</a></li>
+           <li><a href="solution.html">Solutions</a></li>
+           <li><a href="#dashboard">Dashboard</a></li>
+           <li><a href="about.html">About</a></li>
+           <li><a href="contact.html">Contact</a></li>
+       </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost">Login</a>
+      <a href="shop.html" class="btn btn-solid">Shop</a>
+    </div>
+   
+ </nav>
+</header>
+ 
+
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap" style="padding-top:96px;">
+    <div>
+      <div class="eyebrow">AI-Powered Digital Twin</div>
+      <h1>Build smarter factories with <span class="accent">Synchronix</span></h1>
+      <p class="lead">Monitor, simulate, and optimize industrial machines with a live digital twin — mirroring your factory floor in real time, down to the sensor.</p>
+      <div class="hero-ctas">
+        <a href="#solutions" class="btn btn-solid">Explore Solutions</a>
+        <a href="learn.html" class="btn btn-outline-cyan">Learn More</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>12,400+</strong>Sensors mirrored live</div>
+        <div><strong>4.2ms</strong>Average sync latency</div>
+        <div><strong>99.98%</strong>Model fidelity</div>
+      </div>
+    </div>
+
+    <div class="hud">
+      <div class="c2"></div><div class="c3"></div>
+      <div class="hud-head">
+        <span>Line 04 — Twin Feed</span>
+        <span class="live"><span class="pulse"></span>Live</span>
+      </div>
+      <div class="telemetry-row"><span class="label">Spindle Vibration</span><span class="value ok">0.42 mm/s</span></div>
+      <div class="telemetry-row"><span class="label">Motor Temp</span><span class="value warn">78.6 °C</span></div>
+      <div class="telemetry-row"><span class="label">Throughput</span><span class="value ok">1,204 u/hr</span></div>
+      <div class="telemetry-row"><span class="label">Predicted Drift</span><span class="value ok">−0.3%</span></div>
+      <div class="spark" id="spark"></div>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="wrap">
+      <div class="stat"><div class="num">99.98<span>%</span></div><div class="cap">Digital twin accuracy vs. physical asset</div></div>
+      <div class="stat"><div class="num">4.2<span>ms</span></div><div class="cap">Sensor-to-model sync latency</div></div>
+      <div class="stat"><div class="num">37<span>%</span></div><div class="cap">Average unplanned downtime reduction</div></div>
+      <div class="stat"><div class="num">12k<span>+</span></div><div class="cap">Sensors streaming across deployments</div></div>
+    </div>
+  </div>
+
+  <!-- PROCESS (real sequence, so numbering earns its place) -->
+  <section id="process" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How the twin stays in sync</div>
+      <h2>Four stages, running continuously</h2>
+      <p>Synchronix doesn't snapshot your equipment once — it keeps the model current every second, in a loop that never stops running.</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <span class="idx">01 · Ingest</span>
+        <h3>Stream raw sensor data</h3>
+        <p>Vibration, thermal, pressure, and current signals stream in from PLCs and IoT edge nodes with no polling delay.</p>
+        <span class="flow">→</span>
+      </div>
+      <div class="step">
+        <span class="idx">02 · Model</span>
+        <h3>Update the twin</h3>
+        <p>A physics-informed model reconciles incoming data against the live twin, correcting drift in milliseconds.</p>
+        <span class="flow">→</span>
+      </div>
+      <div class="step">
+        <span class="idx">03 · Simulate</span>
+        <h3>Run what-if scenarios</h3>
+        <p>Test load changes, maintenance windows, or failure conditions against the twin before touching the real line.</p>
+        <span class="flow">→</span>
+      </div>
+      <div class="step">
+        <span class="idx">04 · Optimize</span>
+        <h3>Push recommendations</h3>
+        <p>Actionable set-point changes and maintenance alerts route back to operators — closing the loop.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="solutions" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Core Solutions</div>
+      <h2>Everything your floor needs to run itself</h2>
+      <p>Built for plant engineers who need certainty, not dashboards for dashboards' sake.</p>
+    </div>
+    <div class="features">
+      <div class="card">
+        <div class="tag">Monitoring</div>
+        <h3>Real-Time Monitoring</h3>
+        <p>Every asset mirrored continuously, with anomaly detection tuned to each machine's own baseline behavior.</p>
+        <div class="metric">&lt;5ms<span>Alert-to-operator latency</span></div>
+      </div>
+      <div class="card">
+        <div class="tag">Simulation</div>
+        <h3>Predictive Simulation</h3>
+        <p>Run thousands of failure and load scenarios against the twin overnight, ranked by risk and cost impact.</p>
+        <div class="metric">3.1k<span>Scenarios run per model, per week</span></div>
+      </div>
+      <div class="card">
+        <div class="tag">Optimization</div>
+        <h3>Closed-Loop Optimization</h3>
+        <p>Recommendations feed directly back into control systems, or route to operators for one-tap approval.</p>
+        <div class="metric">37%<span>Avg. reduction in unplanned downtime</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section id="dashboard" class="wrap">
+    <div class="preview">
+      <div class="preview-copy">
+        <div class="eyebrow">The Dashboard</div>
+        <h2 style="font-family:var(--display);font-size:clamp(1.8rem,2.6vw,2.3rem);font-weight:700;margin-bottom:14px;">One view of every line, every shift</h2>
+        <p style="color:var(--text-mid);">Plant managers get a single control surface across every mirrored asset — no spreadsheets, no tribal knowledge.</p>
+        <ul class="checklist">
+          <li><span class="mark">→</span> Live health score per machine, updated continuously</li>
+          <li><span class="mark">→</span> Maintenance windows ranked by predicted failure cost</li>
+          <li><span class="mark">→</span> Exportable audit trail for every model correction</li>
+        </ul>
+      </div>
+      <div class="mockup">
+        <div class="mockup-bar"><span></span><span></span><span></span></div>
+        <div class="mockup-body">
+          <div class="mockup-grid">
+            <div class="mockup-tile"><div class="t-label">Line 01</div><div class="t-val">98.2%</div></div>
+            <div class="mockup-tile"><div class="t-label">Line 02</div><div class="t-val">94.7%</div></div>
+            <div class="mockup-tile"><div class="t-label">Line 03</div><div class="t-val">99.1%</div></div>
+          </div>
+          <div class="mockup-chart" id="mockchart"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Ready to mirror your factory floor?</h2>
+      <p>Talk to an engineer about connecting your first line — most deployments go live within two weeks.</p>
+      <a href="demo.html" class="btn btn-solid">Request a Demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo"><span class="dot"></span>SYNCHRONIX</div>
+        <p>AI-powered digital twin infrastructure for industrial operations. Built by engineers who've run the night shift.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="solution.html">Solutions</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="shop.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="career.html">Career</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@synchronix.io">hello@synchronix.io</a></li>
+          <li><a href="contact.html">Support</a></li>
+          <li><a href="demo.html">Book a demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Synchronix Industrial Systems</span>
+      <span>System status: nominal</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function buildBars(container, count, min, max){
+    container.innerHTML = '';
+    for(let i=0;i<count;i++){
+      const bar = document.createElement('i');
+      bar.style.height = (Math.random()*(max-min)+min) + '%';
+      container.appendChild(bar);
+    }
+  }
+  const spark = document.getElementById('spark');
+  const mockchart = document.getElementById('mockchart');
+  buildBars(spark, 24, 20, 95);
+  buildBars(mockchart, 18, 25, 100);
+
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(()=> buildBars(spark, 24, 20, 95), 2200);
+
+    const rows = document.querySelectorAll('.telemetry-row .value');
+    const base = [0.42, 78.6, 1204, -0.3];
+    const unit = [' mm/s',' °C',' u/hr','%'];
+    setInterval(()=>{
+      rows.forEach((el, i)=>{
+        const drift = (Math.random()-0.5) * (i===2 ? 20 : 0.4);
+        const val = (base[i] + drift);
+        const formatted = i===2 ? Math.round(val).toLocaleString() : val.toFixed(2);
+        el.textContent = (i===3 && val>0 ? '+' : '') + formatted + unit[i];
+      });
+    }, 2400);
+  }
+</script>
+<script>
+const menu=document.getElementById("menu");
+
+const links=document.getElementById("links");
+
+
+menu.onclick=function(){
+
+links.classList.toggle("active");
+
+}
+</script>
+</body>
+</html>

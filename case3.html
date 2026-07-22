@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix | Case Study: Steel Fabrication Plant-Wide Rollout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#080f1a;
+    --bg-panel:#0d1826;
+    --bg-panel-2:#111f30;
+    --line:#1e3247;
+    --line-soft:#16273a;
+    --cyan:#22d3ee;
+    --amber:#f5a623;
+    --text-hi:#eaf1f7;
+    --text-mid:#9db2c4;
+    --text-low:#5c728a;
+    --radius:2px;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-deep);color:var(--text-hi);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  ::selection{background:var(--cyan);color:#04121a;}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 48px;}
+  .wrap-narrow{max-width:820px;margin:0 auto;padding:0 48px;}
+
+  .grid-field{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:.35;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 85%);
+  }
+
+  /* ---- nav (shared) ---- */
+  header{position:sticky;top:0;z-index:50;background:rgba(8,15,26,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .logo{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;display:flex;align-items:center;gap:10px;}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px 2px rgba(34,211,238,.7);}
+  .nav-links{display:flex;gap:36px;font-size:.92rem;color:var(--text-mid);}
+  .nav-links a{position:relative;padding:6px 0;transition:color .15s ease;}
+  .nav-links a:hover{color:var(--text-hi);}
+  .nav-links a.active{color:var(--cyan);}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--cyan);box-shadow:0 0 8px rgba(34,211,238,.8);}
+  .nav-actions{display:flex;align-items:center;gap:14px;}
+  .btn{font-family:var(--body);font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:var(--radius);cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;white-space:nowrap;}
+  .btn-ghost{border-color:var(--line);color:var(--text-hi);}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+  .btn-solid{background:var(--cyan);color:#04121a;}
+  .btn-solid:hover{background:#4fe0f7;}
+  .btn-outline-cyan{border:1px solid var(--cyan);color:var(--cyan);}
+  .btn-outline-cyan:hover{background:rgba(34,211,238,.08);}
+
+  .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--cyan);}
+  .breadcrumb{font-family:var(--mono);font-size:.78rem;color:var(--text-low);margin-bottom:26px;}
+  .breadcrumb a{color:var(--text-mid);}
+  .breadcrumb a:hover{color:var(--cyan);}
+
+  /* ---- case hero ---- */
+  .case-hero{position:relative;z-index:1;padding:64px 0 0;}
+  .case-hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(2rem,4vw,3rem);
+    line-height:1.1;
+    letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+  .case-hero p.lead{color:var(--text-mid);font-size:1.08rem;margin-bottom:36px;}
+
+  .client-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:0;
+  }
+  .client-strip div{
+    padding:22px 28px;
+    border-right:1px solid var(--line);
+  }
+  .client-strip div:last-child{border-right:none;}
+  .client-strip .k{
+    font-family:var(--mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--text-low);
+    margin-bottom:8px;
+  }
+  .client-strip .v{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.02rem;
+  }
+
+  /* ---- key metrics band ---- */
+  .metrics-band{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .metrics-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .metric-card{
+    background:var(--bg-panel);
+    padding:32px 28px;
+    text-align:center;
+  }
+  .metric-card .num{
+    font-family:var(--mono);
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--cyan);
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .metric-card .cap{color:var(--text-mid);font-size:.88rem;}
+
+  /* ---- narrative sections ---- */
+  .story{padding:88px 0;}
+  .story-block{margin-bottom:64px;}
+  .story-block:last-child{margin-bottom:0;}
+  .story-block .idx{
+    font-family:var(--mono);
+    font-size:.78rem;
+    color:var(--cyan);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:block;
+  }
+  .story-block h2{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:1.7rem;
+    letter-spacing:-.01em;
+    margin-bottom:18px;
+  }
+  .story-block p{color:var(--text-mid);font-size:1rem;margin-bottom:16px;}
+  .story-block p:last-child{margin-bottom:0;}
+  .story-block ul{margin-top:16px;}
+  .story-block ul li{
+    display:flex;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:.95rem;
+    color:var(--text-mid);
+  }
+  .story-block ul li:last-child{border-bottom:none;}
+  .story-block ul .mk{color:var(--cyan);font-family:var(--mono);flex-shrink:0;}
+
+  /* ---- pull quote ---- */
+  .pull-quote{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--cyan);
+    padding:36px 40px;
+    margin:64px 0;
+  }
+  .pull-quote p{
+    font-family:var(--display);
+    font-size:1.25rem;
+    font-weight:500;
+    line-height:1.5;
+    color:var(--text-hi);
+    margin-bottom:18px;
+  }
+  .pull-quote .attribution{
+    font-family:var(--mono);
+    font-size:.82rem;
+    color:var(--text-low);
+  }
+  .pull-quote .attribution strong{color:var(--cyan);}
+
+  /* ---- results table ---- */
+  .results-table{width:100%;border-top:1px solid var(--line);margin-top:20px;}
+  .results-table .row{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:20px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    align-items:center;
+    font-size:.92rem;
+  }
+  .results-table .row.head{
+    font-family:var(--mono);
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--text-low);
+  }
+  .results-table .row span:nth-child(2),
+  .results-table .row span:nth-child(3){
+    font-family:var(--mono);
+    text-align:right;
+    min-width:90px;
+  }
+  .results-table .row span:nth-child(2){color:var(--text-mid);}
+  .results-table .row span:nth-child(3){color:var(--cyan);font-weight:700;}
+
+  /* ---- related ---- */
+  .related-section{padding:88px 0;border-top:1px solid var(--line);}
+  .related-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .related-card{
+    background:var(--bg-panel);
+    padding:28px;
+  }
+  .related-card .post-meta{
+    font-family:var(--mono);
+    font-size:.74rem;
+    color:var(--amber);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:14px;
+  }
+  .related-card h3{font-family:var(--display);font-size:1.05rem;font-weight:600;line-height:1.35;margin-bottom:14px;}
+  .related-card a{font-family:var(--mono);font-size:.82rem;color:var(--cyan);}
+
+  /* ---- CTA ---- */
+  .cta-band{text-align:center;padding:100px 0;border-top:1px solid var(--line);}
+  .cta-band h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3.2vw,2.4rem);max-width:640px;margin:0 auto 20px;}
+  .cta-band p{color:var(--text-mid);margin-bottom:32px;}
+  .cta-band .btn{padding:15px 30px;font-size:.95rem;}
+
+  footer{position:relative;z-index:1;padding:48px 0;}
+  .foot-bottom{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-low);font-family:var(--mono);flex-wrap:wrap;gap:12px;}
+
+  @media (max-width:900px){
+    .wrap,.wrap-narrow{padding:0 24px;}
+    .nav-links{display:none;}
+    .client-strip{grid-template-columns:1fr 1fr;}
+    .client-strip div:nth-child(2){border-right:none;}
+    .client-strip div:nth-child(3){border-top:1px solid var(--line);}
+    .client-strip div:nth-child(4){border-top:1px solid var(--line);border-right:none;}
+    .metrics-grid{grid-template-columns:1fr;}
+    .related-grid{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span>SYNCHRONIX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="index.html#dashboard">Dashboard</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Login</a>
+      <a href="#" class="btn btn-solid">Shop</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- CASE HERO -->
+  <section class="case-hero wrap-narrow">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Case Study</div>
+    <div class="eyebrow">Case Study · Steel Fabrication</div>
+    <h1>Steel fabricator scales from 1 pilot line to 14 mirrored assets</h1>
+    <p class="lead">What started as a single conveyor pilot became a plant-wide rollout within eight months — proving out the model on one line before committing budget to the rest of the floor.</p>
+      <img src="images/weld.png" alt="Stamping line at the automotive parts plant" class="case-hero-img">
+
+  </section>
+
+  <div class="wrap">
+    <div class="client-strip">
+      <div><div class="k">Industry</div><div class="v">Steel Fabrication</div></div>
+      <div><div class="k">Assets Mirrored</div><div class="v">14 (from 1 pilot)</div></div>
+      <div><div class="k">Rollout Time</div><div class="v">8 Months (phased)</div></div>
+      <div><div class="k">Sensors Connected</div><div class="v">240+ Sensors</div></div>
+    </div>
+  </div>
+
+  <!-- KEY METRICS -->
+  <div class="metrics-band wrap">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="num">14×</div>
+        <div class="cap">Scale from single pilot to plant-wide rollout</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">8 mo</div>
+        <div class="cap">Time from pilot approval to full deployment</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">29%</div>
+        <div class="cap">Plant-wide uptime improvement after rollout</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="story wrap-narrow">
+
+    <div class="story-block">
+      <span class="idx">The Challenge</span>
+      <h2>A plant-wide system needed proof before it got a plant-wide budget</h2>
+      <p>Leadership was interested in a full digital twin rollout across the fabrication floor, but wasn't willing to commit capital for 14 lines' worth of sensors and modeling without evidence it would actually pay off. Fabrication equipment also varies more than a typical assembly line — cutting, bending, and welding stations each have very different failure modes, making a single one-size-fits-all model risky to trust plant-wide from day one.</p>
+      <p>The operations team needed a way to prove the model's value on a small, contained scope before asking for a larger budget commitment.</p>
+    </div>
+
+    <div class="story-block">
+      <span class="idx">The Solution</span>
+      <h2>A phased rollout, starting with one conveyor</h2>
+      <p>Synchronix proposed starting with a single material-handling conveyor — a lower-risk asset with a well-understood failure mode — as a three-month pilot before any conversation about scaling further.</p>
+      <ul>
+        <li><span class="mk">→</span> Pilot conveyor mirrored and validated against real maintenance logs for 90 days</li>
+        <li><span class="mk">→</span> Pilot results used to build the business case for a phased, line-by-line expansion</li>
+        <li><span class="mk">→</span> Each new asset type (press, welder, cutter) modeled individually as rollout progressed</li>
+      </ul>
+    </div>
+
+    <div class="pull-quote">
+      <p>"We didn't have to bet the whole budget on a theory. We bet it on one conveyor, saw it work, and scaled from there."</p>
+      <div class="attribution"><strong>Director of Operations</strong> — Steel Fabrication Plant, Southern US</div>
+    </div>
+
+    <div class="story-block">
+      <span class="idx">The Results</span>
+      <h2>From one pilot line to fourteen mirrored assets</h2>
+      <p>The pilot conveyor's early-failure detection paid for itself within the first quarter, giving leadership the confidence to approve a phased expansion across cutting, bending, and welding stations. Eight months after the pilot began, 14 assets were running live on the platform.</p>
+      <div class="results-table">
+        <div class="row head"><span>Metric</span><span>Pilot (Month 1)</span><span>Full Rollout (Month 8)</span></div>
+        <div class="row"><span>Assets mirrored</span><span>1</span><span>14</span></div>
+        <div class="row"><span>Sensors connected</span><span>12</span><span>240+</span></div>
+        <div class="row"><span>Plant-wide uptime</span><span>Baseline</span><span>+29%</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RELATED CASE STUDIES -->
+  <section class="related-section wrap">
+    <div class="section-head" style="max-width:640px;margin-bottom:48px;">
+      <div class="eyebrow">More Case Studies</div>
+    </div>
+    <div class="related-grid">
+      <div class="related-card">
+        
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Beverage bottler avoids a full line failure with 4-day early warning</h3>
+        <a href="case1.html">Read more →</a>
+      </div>
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Packaging manufacturer reduces changeover testing time by 60%</h3>
+        <a href="case2.html">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Want results like this on your own line?</h2>
+      <p>We'll connect a single machine and show you real telemetry inside two weeks.</p>
+      <a href="" class="btn btn-solid">Request a Demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Synchronix Industrial Systems</span>
+      <span>System status: nominal</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

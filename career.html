@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix — Careers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+      --bg-deep:#080f1a;
+    --bg-panel:#0d1826;
+    --bg-panel-2:#111f30;
+    --line:#185260;
+    --line-soft:#197490;
+    --card:#1e2124;
+    --ink:rgb(22, 217, 227);
+    --ink-soft:#b4cbd2;
+    --teal:#00d4fe;
+    --teal-deep:#9cc3d7;
+    --text-low:cyan;
+    --coral:#9bc1af;
+    --line:#079f97;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --display:'Zilla Slab', Georgia, serif;
+    --body:'Inter', system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:6rem 1.5rem 3.5rem;
+    max-width:920px;
+    margin:0 auto;
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin-bottom:1.6rem;
+  }
+   .grid-field{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:.35;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 85%);
+  }
+  .eyebrow::before{
+    content:"";
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 4px rgba(214,73,51,0.15);
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0 0 1.4rem;
+  }
+  h1 em{font-style:normal;color:var(--teal);}
+  .hero p.lead{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:38rem;
+    margin:0 0 2.2rem;
+  }
+  .hero-stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:2.4rem;
+    padding-top:1.8rem;
+    border-top:1px solid var(--line);
+  }
+  .stat b{
+    display:block;
+    font-family:var(--display);
+    font-size:1.7rem;
+    color:var(--teal-deep);
+  }
+  .stat span{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Section shell ---------- */
+  main{max-width:920px;margin:0 auto;padding:0 1.5rem 2rem;}
+  section{padding:3rem 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:1rem;
+    margin-bottom:2rem;
+  }
+  .section-head h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.9rem;
+    margin:0;
+  }
+  .section-head .chan{
+    font-family:var(--mono);
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+    white-space:nowrap;
+  }
+
+  /* ---------- Values grid ---------- */
+  .values{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1rem;
+  }
+  .value{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:1.4rem 1.4rem;
+  }
+  .value .chan{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--teal-deep);
+    letter-spacing:0.06em;
+    display:block;
+    margin-bottom:0.6rem;
+  }
+  .value h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.15rem;
+    margin:0 0 0.4rem;
+  }
+  .value p{margin:0;color:var(--ink-soft);font-size:0.95rem;}
+
+  /* ---------- Benefits ---------- */
+  .benefits{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem;
+  }
+  .benefits span{
+    font-family:var(--mono);
+    font-size:0.8rem;
+    padding:0.55rem 0.9rem;
+    border-radius:999px;
+    background:var(--card);
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+
+  /* ---------- Open roles (accordion, same pattern as solutions page) ---------- */
+  .list{position:relative;padding-left:2.4rem;}
+  .list::before{
+    content:"";
+    position:absolute;
+    left:6px;top:10px;bottom:10px;
+    width:1px;background:var(--line);
+  }
+  .role{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin-bottom:0.9rem;
+    transition:border-color 0.2s ease;
+  }
+  .role:hover{border-color:var(--teal);}
+  .tick{
+    position:absolute;left:-2.4rem;top:1.55rem;
+    width:13px;height:13px;border-radius:50%;
+    background:var(--bg-deepr);border:2px solid var(--teal);
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .role.open .tick{background:var(--teal);transform:scale(1.15);}
+
+  .head-row{
+    display:flex;align-items:flex-start;gap:1rem;
+    width:100%;padding:1.4rem 1.4rem;
+    background:none;border:none;text-align:left;
+    cursor:pointer;font:inherit;color:inherit;
+  }
+  .head-row:focus-visible{
+    outline:2px solid var(--teal);outline-offset:-2px;border-radius:8px;
+  }
+  .chan{
+    font-family:var(--mono);font-size:0.75rem;color:var(--ink-soft);
+    letter-spacing:0.06em;margin-bottom:0.35rem;display:block;
+  }
+  .head-text{flex:1;min-width:0;}
+  .head-text h3{
+    font-family:var(--display);font-weight:500;font-size:1.25rem;
+    margin:0 0 0.3rem;
+  }
+  .teaser{margin:0;color:var(--ink-soft);font-size:0.95rem;}
+
+  .toggle{
+    flex-shrink:0;width:40px;height:40px;border-radius:50%;
+    border:1px solid var(--line);background:var(--bg-deep);
+    display:flex;align-items:center;justify-content:center;
+    margin-top:0.1rem;
+    transition:transform 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .toggle svg{width:14px;height:14px;stroke:var(--ink);transition:stroke 0.2s ease;}
+  .role.open .toggle{transform:rotate(-90deg);background:var(--teal);border-color:var(--teal);}
+  .role.open .toggle svg{stroke:#fff;}
+
+  .panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.32s ease;}
+  .panel-inner{overflow:hidden;}
+  .role.open .panel{grid-template-rows:1fr;}
+  .panel-content{
+    padding:0 1.4rem 1.5rem 1.4rem;
+    border-top:1px solid var(--line);
+  }
+  .panel-content p{color:var(--ink-soft);max-width:60ch;margin:1rem 0 1rem;}
+  .panel-content ul{
+    margin:0 0 1.2rem;padding-left:1.1rem;
+    color:var(--ink-soft);font-size:0.95rem;
+  }
+  .panel-content li{margin-bottom:0.35rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;}
+  .meta-row span{
+    font-family:var(--mono);font-size:0.72rem;letter-spacing:0.04em;
+    padding:0.3rem 0.6rem;border-radius:999px;
+    background:var(--);border:1px solid var(--line);color:var(--teal-deep);
+  }
+  .apply-btn{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    color:#fff;
+    background:var(--teal-deep);
+    padding:0.7rem 1.2rem;
+    border-radius:8px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:background 0.2s ease;
+  }
+  .apply-btn:hover{background:var(--teal);}
+
+  /* ---------- CTA / no-role-fits ---------- */
+  .cta{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:2rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+  }
+  .cta h3{font-family:var(--display);font-size:1.3rem;margin:0 0 0.4rem;}
+  .cta p{margin:0;color:var(--ink-soft);max-width:34rem;}
+
+  footer{
+    max-width:920px;margin:0 auto;padding:2rem 1.5rem 4rem;
+    font-family:var(--mono);font-size:0.8rem;color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+.breadcrumb{font-family:var(--mono);font-size:.78rem;color:var(--text-low);margin-bottom:26px;}
+  .breadcrumb a{color:var(--text-mid);}
+  .breadcrumb a:hover{color:var(--cyan);}
+  @media (max-width:600px){
+    .hero{padding:3.5rem 1.2rem 2.5rem;}
+    main{padding:0 1.2rem 3rem;}
+    .values{grid-template-columns:1fr;}
+    .list{padding-left:1.8rem;}
+    .list::before{left:4px;}
+    .tick{left:-1.8rem;width:11px;height:11px;}
+    .head-row{padding:1.1rem 1rem;gap:0.7rem;}
+    .toggle{width:34px;height:34px;}
+    .section-head{flex-direction:column;align-items:flex-start;gap:0.4rem;}
+    .cta{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="breadcrumb"><a href="index.html">Home </a> / Career</div>
+    <span class="eyebrow">Synchronix / Careers</span>
+    <h1>Work that stays<br><em>in step.</em></h1>
+    <p class="lead">We build the systems that keep other companies' data, teams, and tools on the same clock. Inside Synchronix, we hold ourselves to the same standard — clear handoffs, shared context, no one left out of sync.</p>
+    <div class="hero-stats">
+      <div class="stat"><b>4</b><span>Open roles</span></div>
+      <div class="stat"><b>Remote-first</b><span>Working model</span></div>
+      <div class="stat"><b>6</b><span>Countries on team</span></div>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="values">
+      <div class="section-head">
+        <h2>How we work</h2>
+        <span class="chan">SYNC/TEAM</span>
+      </div>
+      <div class="values">
+        <div class="value">
+          <span class="chan">01</span>
+          <h3>Write it down</h3>
+          <p>Decisions live in docs, not in one person's head. If it mattered, it's findable six months later.</p>
+        </div>
+        <div class="value">
+          <span class="chan">02</span>
+          <h3>Async by default</h3>
+          <p>Meetings are for judgment calls, not status updates. Most days don't need a single one.</p>
+        </div>
+        <div class="value">
+          <span class="chan">03</span>
+          <h3>Ship in small steps</h3>
+          <p>Smaller changes, shipped often, are easier to review, easier to roll back, and easier to learn from.</p>
+        </div>
+        <div class="value">
+          <span class="chan">04</span>
+          <h3>Own the outcome</h3>
+          <p>Whoever's closest to a problem gets to decide how to fix it — and gets the credit or the lesson.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="section-head">
+        <h2>What you get</h2>
+        <span class="chan">SYNC/BENEFITS</span>
+      </div>
+      <div class="benefits">
+        <span>Remote-first, work from anywhere</span>
+        <span>Flexible hours across time zones</span>
+        <span>Health coverage from day one</span>
+        <span>Equity for every hire</span>
+        <span>Annual team gathering</span>
+        <span>Learning budget, no approval needed</span>
+        <span>Unlimited PTO, tracked at 4 weeks minimum</span>
+      </div>
+    </section>
+
+    <section id="roles">
+      <div class="section-head">
+        <h2>Open roles</h2>
+        <span class="chan">SYNC/OPEN · 04</span>
+      </div>
+
+      <div class="list" id="roles-list">
+
+        <div class="role" data-index="01">
+          <span class="tick" aria-hidden="true"></span>
+          <button class="head-row" aria-expanded="false" aria-controls="rpanel-01" id="rctrl-01">
+            <span class="head-text">
+              <span class="chan">ENGINEERING</span>
+              <h3>Senior Backend Engineer, Sync Platform</h3>
+              <p class="teaser">Own the real-time replication core that keeps customer systems in lockstep.</p>
+            </span>
+            <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+          </button>
+          <div class="panel" id="rpanel-01" role="region" aria-labelledby="rctrl-01">
+            <div class="panel-inner">
+              <div class="panel-content">
+                <div class="meta-row"><span>Remote</span><span>Full-time</span><span>5+ yrs experience</span></div>
+                <p>You'll work on the engine that keeps thousands of customer databases and apps agreeing with each other in real time, including conflict resolution when two systems disagree at once.</p>
+                <ul>
+                  <li>Design and maintain low-latency, fault-tolerant sync pipelines</li>
+                  <li>Improve conflict-resolution logic used across every customer integration</li>
+                  <li>Partner with the infra team on scaling as customer volume grows</li>
+                </ul>
+                <a class="apply-btn" href="#">Apply for this role</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="role" data-index="02">
+          <span class="tick" aria-hidden="true"></span>
+          <button class="head-row" aria-expanded="false" aria-controls="rpanel-02" id="rctrl-02">
+            <span class="head-text">
+              <span class="chan">DESIGN</span>
+              <h3>Product Designer, Workflow Automation</h3>
+              <p class="teaser">Make complex, multi-step automations feel obvious to set up and safe to trust.</p>
+            </span>
+            <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+          </button>
+          <div class="panel" id="rpanel-02" role="region" aria-labelledby="rctrl-02">
+            <div class="panel-inner">
+              <div class="panel-content">
+                <div class="meta-row"><span>Remote</span><span>Full-time</span><span>3+ yrs experience</span></div>
+                <p>You'll design the builder customers use to chain together approvals, triggers, and actions — balancing power for advanced users against clarity for someone doing it for the first time.</p>
+                <ul>
+                  <li>Design end-to-end flows for the visual automation builder</li>
+                  <li>Run usability sessions with customers building real workflows</li>
+                  <li>Work closely with engineering to ship iteratively, not in one big release</li>
+                </ul>
+                <a class="apply-btn" href="#">Apply for this role</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="role" data-index="03">
+          <span class="tick" aria-hidden="true"></span>
+          <button class="head-row" aria-expanded="false" aria-controls="rpanel-03" id="rctrl-03">
+            <span class="head-text">
+              <span class="chan">CUSTOMER SUCCESS</span>
+              <h3>Solutions Engineer</h3>
+              <p class="teaser">Help customers wire Synchronix into their existing stack without breaking anything.</p>
+            </span>
+            <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+          </button>
+          <div class="panel" id="rpanel-03" role="region" aria-labelledby="rctrl-03">
+            <div class="panel-inner">
+              <div class="panel-content">
+                <div class="meta-row"><span>Remote</span><span>Full-time</span><span>2+ yrs experience</span></div>
+                <p>You'll be the technical voice in customer conversations — scoping integrations, troubleshooting sync issues, and feeding what you learn back to product.</p>
+                <ul>
+                  <li>Scope and support customer integrations pre- and post-sale</li>
+                  <li>Debug sync and API issues directly with customer engineering teams</li>
+                  <li>Turn recurring requests into clear input for the roadmap</li>
+                </ul>
+                <a class="apply-btn" href="#">Apply for this role</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="role" data-index="04">
+          <span class="tick" aria-hidden="true"></span>
+          <button class="head-row" aria-expanded="false" aria-controls="rpanel-04" id="rctrl-04">
+            <span class="head-text">
+              <span class="chan">MARKETING</span>
+              <h3>Content Lead</h3>
+              <p class="teaser">Explain synchronization problems and solutions in language people actually use.</p>
+            </span>
+            <span class="toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></span>
+          </button>
+          <div class="panel" id="rpanel-04" role="region" aria-labelledby="rctrl-04">
+            <div class="panel-inner">
+              <div class="panel-content">
+                <div class="meta-row"><span>Remote</span><span>Full-time</span><span>4+ yrs experience</span></div>
+                <p>You'll own the words that explain what Synchronix does — from the solutions page to release notes to case studies — keeping every piece specific and free of jargon.</p>
+                <ul>
+                  <li>Write and edit site copy, case studies, and product announcements</li>
+                  <li>Partner with product to translate technical detail into plain language</li>
+                  <li>Build a consistent voice across every surface customers see</li>
+                </ul>
+                <a class="apply-btn" href="#">Apply for this role</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="no-fit">
+      <div class="cta">
+        <div>
+          <h3>Don't see the right role?</h3>
+          <p>We open roles as the team grows. Send us what you're good at and we'll reach out when something lines up.</p>
+        </div>
+        <a class="apply-btn" href="#">Get in touch</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+   2026 Synchronix — synchronized systems for businesses that can't afford drift. | Authorised by Qumi Jenis Pvt Ltd
+  </footer>
+
+<script>
+  document.querySelectorAll('.head-row').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var role = btn.closest('.role');
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      role.classList.toggle('open', !expanded);
+    });
+  });
+</script>
+
+</body>
+</html>

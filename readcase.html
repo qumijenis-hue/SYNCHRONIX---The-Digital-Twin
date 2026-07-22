@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix | Case Study: Midwest Auto Parts Plant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="read.css">
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span>SYNCHRONIX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="index.html#dashboard">Dashboard</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Login</a>
+      <a href="#" class="btn btn-solid">Shop</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- CASE HERO -->
+  <section class="case-hero wrap-narrow">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Case Study</div>
+    <div class="eyebrow">Case Study · Automotive Manufacturing</div>
+    <h1>How a Midwest auto parts plant cut unplanned downtime by 41%</h1>
+    <p class="lead">After mirroring three stamping lines with Synchronix, the plant's maintenance team moved from reactive repairs to a predicted-failure queue — and stopped losing entire shifts to surprise breakdowns.</p>
+  </section>
+
+  <div class="wrap">
+    <div class="client-strip">
+      <div><div class="k">Industry</div><div class="v">Automotive Stamping</div></div>
+      <div><div class="k">Lines Mirrored</div><div class="v">3 Stamping Lines</div></div>
+      <div><div class="k">Deployment Time</div><div class="v">11 Days</div></div>
+      <div><div class="k">Sensors Connected</div><div class="v">86 Sensors</div></div>
+    </div>
+  </div>
+
+  <!-- KEY METRICS -->
+  <div class="metrics-band wrap">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="num">41%</div>
+        <div class="cap">Reduction in unplanned downtime</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">6.2×</div>
+        <div class="cap">More lead time on failure warnings</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">$1.4M</div>
+        <div class="cap">Estimated annual savings from avoided downtime</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="story wrap-narrow">
+
+    <div class="story-block">
+      <span class="idx">The Challenge</span>
+      <h2>Breakdowns were discovered after they already happened</h2>
+      <p>The plant ran three stamping lines on a fixed preventive-maintenance calendar — every part replaced on a schedule, regardless of actual wear. When a die alignment issue caused an unplanned six-hour stoppage on Line 2, the team realized their calendar-based approach was blind to the failures that mattered most.</p>
+      <p>Maintenance leads estimated they were losing roughly one full shift per month to breakdowns that gave no advance warning, and technicians had no shared way to see a machine's actual condition — only whoever had worked that line longest "just knew" when something felt off.</p>
+    </div>
+
+    <div class="story-block">
+      <span class="idx">The Solution</span>
+      <h2>Mirroring three lines in under two weeks</h2>
+      <p>Synchronix connected directly to the plant's existing PLCs and historian, adding targeted vibration and thermal sensors only where the stamping presses had no existing signal for bearing wear or die misalignment.</p>
+      <ul>
+        <li><span class="mk">→</span> Edge nodes installed on all 3 lines, streaming into the twin within the first week</li>
+        <li><span class="mk">→</span> Physics-informed models tuned to each press's actual tonnage and cycle history</li>
+        <li><span class="mk">→</span> Maintenance team given a ranked, plain-language alert queue instead of raw sensor charts</li>
+      </ul>
+    </div>
+
+    <div class="pull-quote">
+      <p>"We stopped finding out about problems from the sound of a machine stopping. Now we find out four days before, from a dashboard."</p>
+      <div class="attribution"><strong>Plant Maintenance Lead</strong> — Automotive Stamping Facility, Midwest US</div>
+    </div>
+
+    <div class="story-block">
+      <span class="idx">The Results</span>
+      <h2>From reactive repairs to a predicted-failure queue</h2>
+      <p>Within the first quarter of running live, the twin flagged a developing bearing fault on Line 3 four days before any audible symptom appeared — giving the team time to schedule the repair during a planned changeover instead of losing a shift.</p>
+      <div class="results-table">
+        <div class="row head"><span>Metric</span><span>Before</span><span>After</span></div>
+        <div class="row"><span>Unplanned downtime (monthly avg.)</span><span>1 full shift</span><span>−41%</span></div>
+        <div class="row"><span>Average failure warning lead time</span><span>~40 min</span><span>4.2 days</span></div>
+        <div class="row"><span>Maintenance scheduled reactively</span><span>68%</span><span>19%</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RELATED CASE STUDIES -->
+  <section class="related-section wrap">
+    <div class="section-head" style="max-width:640px;margin-bottom:48px;">
+      <div class="eyebrow">More Case Studies</div>
+    </div>
+    <div class="related-grid">
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Beverage bottler avoids a full line failure with 4-day early warning</h3>
+        <a href="case1.html">Read more →</a>
+      </div>
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Packaging manufacturer reduces changeover testing time by 60%</h3>
+        <a href="case2.html">Read more →</a>
+      </div>
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Steel fabricator scales from 1 pilot line to 14 mirrored assets</h3>
+        <a href="case3.html">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Want results like this on your own line?</h2>
+      <p>We'll connect a single machine and show you real telemetry inside two weeks.</p>
+      <a href="demo.html" class="btn btn-solid">Request a Demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Synchronix Industrial Systems</span>
+      <span>System status: nominal</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

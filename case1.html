@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronix | Case Study: Beverage Bottling Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="case1.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  
+</style>
+</head>
+<body>
+
+<div class="grid-field"></div>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="dot"></span>SYNCHRONIX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="index.html#dashboard">Dashboard</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Login</a>
+      <a href="#" class="btn btn-solid">Shop</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- CASE HERO -->
+  <section class="case-hero wrap-narrow">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Case Study</div>
+    <div class="eyebrow">Case Study · Beverage Bottling</div>
+    <h1>Beverage bottler avoids a full line failure with a 4-day early warning</h1>
+    <p class="lead">A slow bearing wear pattern surfaced in the twin's vibration model well before any audible symptom appeared — turning what would have been an emergency stoppage into a scheduled repair.</p>
+     <img src="images/factory.jpg" alt="Stamping line at the automotive parts plant" class="case-hero-img">
+
+  </section>
+  <div class="wrap">
+    <div class="client-strip">
+      <div><div class="k">Industry</div><div class="v">Beverage Bottling</div></div>
+      <div><div class="k">Lines Mirrored</div><div class="v">1 Bottling Line</div></div>
+      <div><div class="k">Deployment Time</div><div class="v">9 Days</div></div>
+      <div><div class="k">Sensors Connected</div><div class="v">34 Sensors</div></div>
+    </div>
+  </div>
+
+  <!-- KEY METRICS -->
+  <div class="metrics-band wrap">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="num">4.2</div>
+        <div class="cap">Days of advance warning before failure</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">0</div>
+        <div class="cap">Unplanned line stoppages since deployment</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">$310K</div>
+        <div class="cap">Estimated cost of the outage that was avoided</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="story wrap-narrow">
+
+    <div class="story-block">
+      <span class="idx">The Challenge</span>
+      <h2>A single conveyor motor could take down the whole line</h2>
+      <p>The bottler's filling line ran on a single continuous conveyor path, which meant a bearing failure anywhere along it could stop the entire line — not just one station. Historically, these failures were only caught by ear: a technician noticing an unusual sound during a walk-through, often after the wear had already progressed to the point of imminent failure.</p>
+      <p>With three shifts running and no dedicated night-shift maintenance technician, wear on the conveyor's drive motor had gone undetected for weeks before a near-miss stoppage prompted the plant to look for a better way to monitor line health.</p>
+    </div>
+
+    <div class="story-block">
+      <span class="idx">The Solution</span>
+      <h2>A focused deployment on the highest-risk asset</h2>
+      <p>Rather than mirroring the entire filling line at once, Synchronix started with the conveyor's drive motor and gearbox — the single point of failure most likely to stop the whole line — and expanded sensor coverage from there.</p>
+      <ul>
+        <li><span class="mk">→</span> Vibration and thermal sensors added to the drive motor and both gearbox bearings</li>
+        <li><span class="mk">→</span> Baseline model trained against two weeks of normal-operation data before going live</li>
+        <li><span class="mk">→</span> Alerts routed to the maintenance team's existing paging system, no new software to check</li>
+      </ul>
+    </div>
+
+    <div class="pull-quote">
+      <p>"The model caught a wear pattern none of us would have noticed for another week. We fixed it on a Tuesday afternoon instead of during a Saturday night emergency call."</p>
+      <div class="attribution"><strong>Reliability Engineer</strong> — Beverage Bottling Facility, Southeast US</div>
+    </div>
+
+    <div class="story-block">
+      <span class="idx">The Results</span>
+      <h2>A scheduled repair instead of an emergency one</h2>
+      <p>Three weeks after going live, the twin flagged a slow but steady rise in bearing vibration on the drive motor — a pattern consistent with early-stage wear, days before it would have produced any audible symptom. The team scheduled a replacement during a planned changeover window, avoiding what modeling suggested would otherwise have been a multi-hour unplanned stoppage.</p>
+      <div class="results-table">
+        <div class="row head"><span>Metric</span><span>Before</span><span>After</span></div>
+        <div class="row"><span>Failure detection method</span><span>Audible / reactive</span><span>Model-based</span></div>
+        <div class="row"><span>Advance warning lead time</span><span>Minutes</span><span>4.2 days</span></div>
+        <div class="row"><span>Unplanned line stoppages (since deploy)</span><span>2 per quarter</span><span>0</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RELATED CASE STUDIES -->
+  <section class="related-section wrap">
+    <div class="section-head" style="max-width:640px;margin-bottom:48px;">
+      <div class="eyebrow">More Case Studies</div>
+    </div>
+    <div class="related-grid">
+      <div class="related-card">
+        >
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Packaging manufacturer reduces changeover testing time by 60%</h3>
+        <a href="case2.html">Read more →</a>
+      </div>
+      <div class="related-card">
+        <div class="post-meta">Case Study</div>
+        <h3>Steel fabricator scales from 1 pilot line to 14 mirrored assets</h3>
+        <a href="case3.html">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Want results like this on your own line?</h2>
+      <p>We'll connect a single machine and show you real telemetry inside two weeks.</p>
+      <a href="demo.html" class="btn btn-solid">Request a Demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Synchronix Industrial Systems</span>
+      <span>System status: nominal</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

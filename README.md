@@ -82,7 +82,7 @@ Computer Science and Engineering Student
 
 GitHub: https://github.com/qumijenis-hue
 
-LinkedIn: https://linkedin.com/in/QumiJenisTenzing
+
 
 ---
 

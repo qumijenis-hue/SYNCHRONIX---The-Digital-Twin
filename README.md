@@ -74,9 +74,9 @@ Synchronix/
 
 Computer Science and Engineering Student
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/qumijenis-hue
 
-LinkedIn: https://linkedin.com/in/your-profile
+LinkedIn: https://linkedin.com/in/Qumi Jenis Tenzing
 
 ---
 

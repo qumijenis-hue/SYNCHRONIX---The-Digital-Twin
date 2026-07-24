@@ -1,6 +1,5 @@
 # Synchronix – The Digital Twin System
 
-![Banner](images/banner.jpg)
 
 ## Overview
 

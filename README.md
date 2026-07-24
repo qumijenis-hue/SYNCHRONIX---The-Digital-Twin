@@ -21,6 +21,13 @@ The website presents Digital Twin solutions through an engaging user interface, 
 - Contact page
 - Mobile navigation menu
 - Modern animations and transitions
+- Login Page
+- Register Page
+- Request for a Demo Page
+- News
+- Blog
+- Shop Page
+
 
 ---
 

@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synchronix | Apply for job</title>
-
-    <link rel="stylesheet" href="register.css">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — Synchronix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
     --ink: #10241c;
     --deep: #153b2c;
     --mid: #1f4d3a;
@@ -25,58 +17,211 @@
     --line: #d9e6df;
     --muted: #5c7268;
   }
-        textarea {
-    min-height: 110px;
-    resize: vertical;
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  .confirm {
-    display: none;
-    text-align: center;
-    padding: 30px 10px 10px;
+
+  h1, h2, h3, .display {
+    font-family: 'Sora', sans-serif;
   }
- .meta-item {
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  header.top {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .brand svg { display: block; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    padding: 72px 0 64px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--leaf);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    color: var(--deep);
+    font-weight: 700;
+  }
+
+  .hero p.lede {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0 0 32px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-bottom: 36px;
+  }
+
+  .meta-item {
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
- 
+
   .meta-item .label {
     font-size: 11px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: white;
+    color: var(--muted);
   }
- 
-  .confirm .ring {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 18px;
-    border-radius: 50%;
-    background: linear-gradient(120deg, var(--deep), var(--cyan));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
- 
-  .confirm h3 {
-    margin: 0 0 6px;
+
+  .meta-item .value {
+    font-size: 15px;
+    font-weight: 600;
     color: var(--deep);
   }
- 
-  .confirm p {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
+
+  .rings-decor {
+    position: relative;
+    height: 40px;
+    margin-bottom: 8px;
   }
- 
-  footer.bottom {
+
+  .about-block {
     border-top: 1px solid var(--line);
-    padding: 26px 0 48px;
-    color: var(--muted);
-    font-size: 13px;
-    text-align: center;
+    padding-top: 28px;
   }
-        .file-drop {
+
+  .about-block h3 {
+    font-size: 15px;
+    color: var(--deep);
+    margin: 0 0 12px;
+  }
+
+  .about-block ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+
+  /* Form card */
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 36px;
+    box-shadow: 0 20px 50px -30px rgba(21, 59, 44, 0.35);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(34,195,214,0.16), transparent 70%);
+  }
+
+  .card h2 {
+    font-size: 20px;
+    color: var(--deep);
+    margin: 0 0 6px;
+  }
+
+  .card .sub {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+
+  .field {
+    margin-bottom: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #fbfdfc;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    color: var(--ink);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(34,195,214,0.15);
+  }
+
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .file-drop {
     border: 1.5px dashed var(--line);
     border-radius: 8px;
     padding: 20px 14px;
@@ -87,21 +232,21 @@
     transition: border-color 0.15s ease, background 0.15s ease;
     background: #fbfdfc;
   }
- 
+
   .file-drop:hover {
     border-color: var(--cyan);
     background: #f1fbfc;
   }
- 
+
   .file-drop input { display: none; }
- 
+
   .file-drop .fname {
     color: var(--deep);
     font-weight: 600;
     margin-top: 4px;
     display: none;
   }
- 
+
   button.submit {
     width: 100%;
     padding: 13px 18px;
@@ -116,88 +261,152 @@
     margin-top: 8px;
     transition: filter 0.15s ease, transform 0.1s ease;
   }
- 
+
   button.submit:hover { filter: brightness(1.06); }
   button.submit:active { transform: scale(0.99); }
- 
-    </style>
+
+  .confirm {
+    display: none;
+    text-align: center;
+    padding: 30px 10px 10px;
+  }
+
+  .confirm .ring {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--deep), var(--cyan));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .confirm h3 {
+    margin: 0 0 6px;
+    color: var(--deep);
+  }
+
+  .confirm p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  footer.bottom {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 48px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 44px; }
+    .hero h1 { font-size: 34px; }
+    .two-col { grid-template-columns: 1fr; }
+    .wrap { padding: 0 20px; }
+  }
+</style>
 </head>
 <body>
 
-<div class="container">
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 120 120">
+        <circle cx="46" cy="46" r="26" fill="none" stroke="#1f4d3a" stroke-width="9"/>
+        <circle cx="74" cy="74" r="26" fill="none" stroke="#22c3d6" stroke-width="9"/>
+        <circle cx="46" cy="46" r="4" fill="#1f4d3a"/>
+        <circle cx="74" cy="74" r="4" fill="#22c3d6"/>
+      </svg>
+      SYNCHRONIX
+    </div>
+  </div>
+</header>
 
-    <div class="signup-card">
+<section class="hero">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <div class="eyebrow">Now hiring</div>
+      <h1>Software Engineer,<br>Digital Twin Platform</h1>
+      <p class="lede">Help build the simulation layer that mirrors real systems in real time. You'll work across data ingestion, 3D rendering, and the sync engine that keeps the twin honest.</p>
 
-        <div class="logo">
-            <i class="fa-solid fa-microchip"></i>
-            <h2>Synchronix</h2>
-            <p>Create your account</p>
+      <div class="meta-row">
+        <div class="meta-item">
+          <span class="label">Location</span>
+          <span class="value">Remote · Hybrid options</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Type</span>
+          <span class="value">Full-time</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Team</span>
+          <span class="value">Platform Engineering</span>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <h3>What you'll do</h3>
+        <ul>
+          <li>Build and maintain real-time data pipelines feeding the digital twin</li>
+          <li>Ship features across the sync engine and visualization layer</li>
+          <li>Partner with design and ops to keep the twin accurate under load</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Apply for this role</h2>
+      <p class="sub">Fields marked with * are required. We'll follow up by email within a week.</p>
+
+      <form id="applyForm">
+        <div class="two-col">
+          <div class="field">
+            <label for="fname">First name *</label>
+            <input type="text" id="fname" required>
+          </div>
+          <div class="field">
+            <label for="lname">Last name *</label>
+            <input type="text" id="lname" required>
+          </div>
         </div>
 
-        <form>
+        <div class="field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" required>
+        </div>
 
-            <div class="input-box">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Full Name" required>
-            </div>
-           <div class="input-box">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Qualification" required>
-            </div>
-           
-            <div class="input-box">
-                <i class="fa-solid fa-user"></i>
-                <input type="tel" placeholder="Phone" required>
-            </div>
+        <div class="two-col">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone">
+          </div>
+          <div class="field">
+            <label for="linkedin">LinkedIn / portfolio</label>
+            <input type="url" id="linkedin" placeholder="https://">
+          </div>
+        </div>
 
-            <div class="input-box">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Email Address" required>
-            </div>
-                  <div class="input-box">
-
-    <i class="fa-brands fa-linkedin"></i>
-
-    <input
-
-        type="url"
-
-        name="linkedin"
-
-        placeholder="LinkedIn Profile URL"
-
-        pattern="https://(www\.)?linkedin\.com/.*"
-
-        title="Please enter a valid LinkedIn profile URL"
-
-    >
-
-</div>
-               <div class="input-box">
+        <div class="field">
           <label>Resume *</label>
           <label class="file-drop" id="dropLabel">
             <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
             <span id="dropText">Click to upload — PDF or Word, up to 10MB</span>
             <div class="fname" id="fileName"></div>
           </label>
-               </div>
-             <div class="input-box">
+        </div>
+
+        <div class="field">
           <label for="cover">Why this role? *</label>
           <textarea id="cover" required placeholder="Tell us what draws you to Synchronix..."></textarea>
         </div>
 
-            <label class="terms">
-                <input type="checkbox">
-                I agree to the Terms & Conditions
-            </label>
+        <button type="submit" class="submit">Submit application</button>
+      </form>
 
-            <button class="signup-btn">
-                Apply now
-            </button>
-
-        </form>
-
- <div class="confirm" id="confirmBlock">
+      <div class="confirm" id="confirmBlock">
         <div class="ring">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
             <path d="M4 12.5L9.5 18L20 6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -206,19 +415,20 @@
         <h3>Application received</h3>
         <p>Thanks for applying to Synchronix. We'll be in touch soon.</p>
       </div>
-    </div
-
     </div>
+  </div>
+</section>
 
-</div>
-    
- 
+<footer class="bottom">
+  <div class="wrap">© 2026 Synchronix. All rights reserved.</div>
+</footer>
+
 <script>
   const dropLabel = document.getElementById('dropLabel');
   const resumeInput = document.getElementById('resume');
   const dropText = document.getElementById('dropText');
   const fileName = document.getElementById('fileName');
- 
+
   resumeInput.addEventListener('change', () => {
     if (resumeInput.files.length > 0) {
       dropText.textContent = 'File selected:';
@@ -226,7 +436,7 @@
       fileName.style.display = 'block';
     }
   });
- 
+
   document.getElementById('applyForm').addEventListener('submit', function(e) {
     e.preventDefault();
     this.style.display = 'none';

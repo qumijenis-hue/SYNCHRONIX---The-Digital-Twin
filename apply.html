@@ -25,6 +25,10 @@
     --line: #d9e6df;
     --muted: #5c7268;
   }
+        textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
   .confirm {
     display: none;
     text-align: center;
@@ -177,6 +181,10 @@
             <div class="fname" id="fileName"></div>
           </label>
                </div>
+             <div class="input-box">
+          <label for="cover">Why this role? *</label>
+          <textarea id="cover" required placeholder="Tell us what draws you to Synchronix..."></textarea>
+        </div>
 
             <label class="terms">
                 <input type="checkbox">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synchronix | Sign Up</title>
+    <title>Synchronix | Apply for job</title>
 
     <link rel="stylesheet" href="register.css">
 
@@ -14,6 +14,88 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        
+  .confirm {
+    display: none;
+    text-align: center;
+    padding: 30px 10px 10px;
+  }
+ 
+  .confirm .ring {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, var(--deep), var(--cyan));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .confirm h3 {
+    margin: 0 0 6px;
+    color: var(--deep);
+  }
+ 
+  .confirm p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+ 
+  footer.bottom {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 48px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+        .file-drop {
+    border: 1.5px dashed var(--line);
+    border-radius: 8px;
+    padding: 20px 14px;
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    background: #fbfdfc;
+  }
+ 
+  .file-drop:hover {
+    border-color: var(--cyan);
+    background: #f1fbfc;
+  }
+ 
+  .file-drop input { display: none; }
+ 
+  .file-drop .fname {
+    color: var(--deep);
+    font-weight: 600;
+    margin-top: 4px;
+    display: none;
+  }
+ 
+  button.submit {
+    width: 100%;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(120deg, var(--deep), var(--cyan));
+    color: #ffffff;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: filter 0.15s ease, transform 0.1s ease;
+  }
+ 
+  button.submit:hover { filter: brightness(1.06); }
+  button.submit:active { transform: scale(0.99); }
+ 
+    </style>
 </head>
 <body>
 
@@ -37,18 +119,28 @@
                 <i class="fa-solid fa-user"></i>
                 <input type="text" placeholder="Qualification" required>
             </div>
-
+           
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="tel" placeholder="Phone" required>
+            </div>
 
             <div class="input-box">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" placeholder="Email Address" required>
             </div>
- <div class="input-box">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Linked In profile link" required>
-            </div>
-          
-            
+                  <div class="input-box">
+            <label for="linkedin">LinkedIn / portfolio</label>
+            <input type="url" id="linkedin" placeholder="https://">
+          </div>
+               <div class="input-box">
+          <label>Resume *</label>
+          <label class="file-drop" id="dropLabel">
+            <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+            <span id="dropText">Click to upload — PDF or Word, up to 10MB</span>
+            <div class="fname" id="fileName"></div>
+          </label>
+        </div
 
             <label class="terms">
                 <input type="checkbox">
@@ -61,28 +153,44 @@
 
         </form>
 
-        <div class="divider">
-            <span>OR</span>
+ <div class="confirm" id="confirmBlock">
+        <div class="ring">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.5L9.5 18L20 6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-
-        <button class="social google">
-            <i class="fa-brands fa-google"></i>
-            Continue with Google
-        </button>
-
-        <button class="social facebook">
-            <i class="fa-brands fa-facebook-f"></i>
-            Continue with Facebook
-        </button>
-
-        <p class="login">
-            Already have an account?
-            <a href="login.html">Sign In</a>
-        </p>
+        <h3>Application received</h3>
+        <p>Thanks for applying to Synchronix. We'll be in touch soon.</p>
+      </div>
+    </div
 
     </div>
 
 </div>
+    <footer class="bottom">
+  <div class="wrap">© 2026 Synchronix. All rights reserved.</div>
+</footer>
+ 
+<script>
+  const dropLabel = document.getElementById('dropLabel');
+  const resumeInput = document.getElementById('resume');
+  const dropText = document.getElementById('dropText');
+  const fileName = document.getElementById('fileName');
+ 
+  resumeInput.addEventListener('change', () => {
+    if (resumeInput.files.length > 0) {
+      dropText.textContent = 'File selected:';
+      fileName.textContent = resumeInput.files[0].name;
+      fileName.style.display = 'block';
+    }
+  });
+ 
+  document.getElementById('applyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('confirmBlock').style.display = 'block';
+  });
+</script>
 
 </body>
 </html>

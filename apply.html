@@ -276,8 +276,8 @@
     transition: filter 0.15s ease, transform 0.1s ease;
   }
 
-  btn.:hover { filter: brightness(1.06); }
-  btn.:active { transform: scale(0.99); }
+ .btn:hover { filter: brightness(1.06); }
+  .btn:active { transform: scale(0.99); }
 
   .confirm {
     display: none;
@@ -452,11 +452,7 @@
     }
   });
 
-  document.getElementById('applyForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('confirmBlock').style.display = 'block';
-  });
+  
 </script>
 
 </body>

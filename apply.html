@@ -387,11 +387,7 @@
         <div class="two-col">
           <div class="field">
             <label for="fname">First name *</label>
-            <div class="warning">
-
-    ⚠️ Please fill in this field.
-
-</div>
+            
             <input type="text" id="fname" required>
           </div>
           <div class="field">
@@ -429,8 +425,8 @@
           <label for="cover">Why this role? *</label>
           <textarea id="cover" required placeholder="Tell us what draws you to Synchronix..."></textarea>
         </div>
-
-       <div><a href="submit.html" class="btn">Submit Application</a></div>
+<p id="warning" class="warning"></p>
+        <button type="submit" class="btn">Submit Application</button>
       </form>
 
       <div class="confirm" id="confirmBlock">
@@ -463,7 +459,19 @@
       fileName.style.display = 'block';
     }
   });
+document.getElementById("applyForm").addEventListener("submit", function(event) {
 
+    let name = document.getElementById("name").value;
+    let warning = document.getElementById("warning");
+
+    if (name.trim() === "") {
+        event.preventDefault(); // stops form submission
+        warning.innerHTML = "⚠️ Please fill this field.";
+    } else {
+        warning.innerHTML = "";
+    }
+
+});
   
 </script>
 

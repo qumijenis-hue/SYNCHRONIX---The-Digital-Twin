@@ -459,19 +459,11 @@
       fileName.style.display = 'block';
     }
   });
-document.getElementById("applyForm").addEventListener("submit", function(event) {
-
-    let name = document.getElementById("name").value;
-    let warning = document.getElementById("warning");
-
-    if (name.trim() === "") {
-        event.preventDefault(); // stops form submission
-        warning.innerHTML = "⚠️ Please fill this field.";
-    } else {
-        warning.innerHTML = "";
-    }
-
-});
+ document.getElementById('applyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('confirmBlock').style.display = 'block';
+  });
   
 </script>
 

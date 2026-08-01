@@ -41,7 +41,7 @@ The website presents Digital Twin solutions through an engaging user interface, 
 
 ---
 ## Screenshots of the website
-![image alt]()
+![image alt](https://github.com/qumijenis-hue/SYNCHRONIX---The-Digital-Twin/blob/cb93cd9334dd8db2ddeb86815feabfad65bc8414/images/homescreen.png)
 
 ## Project Structure
 

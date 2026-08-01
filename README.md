@@ -40,6 +40,8 @@ The website presents Digital Twin solutions through an engaging user interface, 
 - Git & GitHub
 
 ---
+## Screenshots of the website
+![image alt]()
 
 ## Project Structure
 

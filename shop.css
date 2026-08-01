@@ -3,6 +3,8 @@
     padding:0;
     box-sizing:border-box;
     font-family:"Poppins",sans-serif;
+    background-image: url('https://github.com/qumijenis-hue/SYNCHRONIX---The-Digital-Twin/blob/b006a415910527a57d4ce21b8881cf3b9d9b195f/images/black-friday-sales-sign-neon-light.jpg');
+    
 }
 
 
@@ -11,6 +13,7 @@ body{
     background:linear-gradient(135deg,#020617,#0f3b70);
 
     color:white;
+    
 
 }
 
